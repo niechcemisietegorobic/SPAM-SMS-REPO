@@ -68,7 +68,7 @@ Model: **KNeighborsClassifier(n_neighbors=5)**.
 
 Ten model sprawdza, do jakich znanych wiadomości nowy SMS jest najbardziej podobny.
 
-![Macierz pomyłek KNN](macierz_knn.png)
+spamsms/![Macierz pomyłek KNN](macierz_knn.png)
 
 ---
 
