@@ -5,7 +5,7 @@ Projekt wykonany w ramach przedmiotu **Metody AI w badaniu zagrożeń w systemac
 Celem projektu jest rozpoznawanie, czy wiadomość SMS jest:
 
 - **ham** — normalną wiadomością,
-- **spam** — wiadomością niechcianą.
+- **spam** — wiadomością niechcianą. 
 
 Projekt zawiera analizę danych, trzy metody klasyfikacji, walidację krzyżową, analizę statystyczną oraz dodatkowe eksperymenty dodane po wskazówkach prowadzącego.
 
