@@ -1,0 +1,210 @@
+Lacznie wiadomosci: 5572
+Ham: 4825 ( 86.6 %)
+Spam: 747 ( 13.4 %)
+
+==================================================
+GaussianNB + ręczne cechy
+==================================================
+Accuracy: 0.9453
+Balanced accuracy: 0.9202
+PR-AUC: 0.8991
+ROC-AUC: 0.9682
+              precision    recall  f1-score   support
+
+         Ham       0.98      0.95      0.97       966
+        Spam       0.75      0.89      0.81       149
+
+    accuracy                           0.95      1115
+   macro avg       0.87      0.92      0.89      1115
+weighted avg       0.95      0.95      0.95      1115
+
+Macierz pomylek:
+[[922  44]
+ [ 17 132]]
+TN: 922 FP: 44 FN: 17 TP: 132
+
+==================================================
+TF-IDF + ComplementNB
+==================================================
+Accuracy: 0.9767
+Balanced accuracy: 0.9298
+PR-AUC: 0.9516
+ROC-AUC: 0.9772
+              precision    recall  f1-score   support
+
+         Ham       0.98      0.99      0.99       966
+        Spam       0.96      0.87      0.91       149
+
+    accuracy                           0.98      1115
+   macro avg       0.97      0.93      0.95      1115
+weighted avg       0.98      0.98      0.98      1115
+
+Macierz pomylek:
+[[960   6]
+ [ 20 129]]
+TN: 960 FP: 6 FN: 20 TP: 129
+
+==================================================
+KNN + StandardScaler + ręczne cechy
+==================================================
+Accuracy: 0.9794
+Balanced accuracy: 0.9342
+PR-AUC: 0.904
+ROC-AUC: 0.955
+              precision    recall  f1-score   support
+
+         Ham       0.98      1.00      0.99       966
+        Spam       0.97      0.87      0.92       149
+
+    accuracy                           0.98      1115
+   macro avg       0.98      0.93      0.95      1115
+weighted avg       0.98      0.98      0.98      1115
+
+Macierz pomylek:
+[[962   4]
+ [ 19 130]]
+TN: 962 FP: 4 FN: 19 TP: 130
+
+==================================================
+DODATKOWY EKSPERYMENT - GaussianNB na roznych inputach
+==================================================
+
+Input: tylko dlugosc
+Cechy: ['dlugosc']
+Accuracy: 0.8664
+Precision spam: 0.0
+Recall spam: 0.0
+F1 spam: 0.0
+
+Input: tylko wykrzykniki
+Cechy: ['wykrzykniki']
+Accuracy: 0.8619
+Precision spam: 0.4615
+Recall spam: 0.2013
+F1 spam: 0.2804
+
+Input: tylko cyfry
+Cechy: ['cyfry']
+Accuracy: 0.9659
+Precision spam: 0.8627
+Recall spam: 0.8859
+F1 spam: 0.8742
+
+Input: dlugosc + slowa
+Cechy: ['dlugosc', 'slowa']
+Accuracy: 0.8422
+Precision spam: 0.4487
+Recall spam: 0.7919
+F1 spam: 0.5728
+
+Input: cyfry + wykrzykniki
+Cechy: ['cyfry', 'wykrzykniki']
+Accuracy: 0.9561
+Precision spam: 0.8049
+Recall spam: 0.8859
+F1 spam: 0.8435
+
+Input: wszystkie 5 cech
+Cechy: ['dlugosc', 'slowa', 'wielkie', 'cyfry', 'wykrzykniki']
+Accuracy: 0.9453
+Precision spam: 0.75
+Recall spam: 0.8859
+F1 spam: 0.8123
+
+==================================================
+DODATKOWY EKSPERYMENT - RandomOverSampler i SMOTE
+==================================================
+
+Metoda: bez resamplingu
+Liczba ham w treningu: 3859
+Liczba spam w treningu: 598
+Precision spam: 0.75
+Recall spam: 0.8859
+F1 spam: 0.8123
+Balanced accuracy: 0.9202
+Macierz pomylek:
+[[922  44]
+ [ 17 132]]
+
+Metoda: RandomOverSampler
+Liczba ham w treningu: 3859
+Liczba spam w treningu: 3859
+Precision spam: 0.6979
+Recall spam: 0.8993
+F1 spam: 0.7859
+Balanced accuracy: 0.9196
+Macierz pomylek:
+[[908  58]
+ [ 15 134]]
+
+Metoda: SMOTE
+Liczba ham w treningu: 3859
+Liczba spam w treningu: 3859
+Precision spam: 0.709
+Recall spam: 0.8993
+F1 spam: 0.7929
+Balanced accuracy: 0.9212
+Macierz pomylek:
+[[911  55]
+ [ 15 134]]
+
+==================================================
+WALIDACJA KRZYZOWA
+==================================================
+
+GaussianNB + ręczne cechy
+accuracy : 0.9542 +/- 0.0055
+balanced_accuracy : 0.9332 +/- 0.0121
+precision_spam : 0.7876 +/- 0.0281
+recall_spam : 0.9044 +/- 0.0265
+f1_spam : 0.8414 +/- 0.0169
+roc_auc : 0.9775 +/- 0.0066
+
+KNN + StandardScaler
+accuracy : 0.9786 +/- 0.0052
+balanced_accuracy : 0.9355 +/- 0.0163
+precision_spam : 0.961 +/- 0.0213
+recall_spam : 0.8766 +/- 0.0323
+f1_spam : 0.9165 +/- 0.0211
+roc_auc : 0.9642 +/- 0.0105
+
+TF-IDF + ComplementNB
+accuracy : 0.9822 +/- 0.0038
+balanced_accuracy : 0.9449 +/- 0.0127
+precision_spam : 0.971 +/- 0.0099
+recall_spam : 0.894 +/- 0.0251
+f1_spam : 0.9307 +/- 0.0153
+roc_auc : 0.9829 +/- 0.0073
+
+==================================================
+ANALIZA STATYSTYCZNA - TEST WILCOXONA
+==================================================
+
+GaussianNB vs TF-IDF + ComplementNB
+mean A: 0.8414
+mean B: 0.9307
+statistic: 0.0
+p-value: 5.960464477539063e-08
+istotna roznica: True
+
+KNN vs TF-IDF + ComplementNB
+mean A: 0.9165
+mean B: 0.9307
+statistic: 46.0
+p-value: 0.0010271072387695312
+istotna roznica: True
+
+GaussianNB vs KNN
+mean A: 0.8414
+mean B: 0.9165
+statistic: 0.0
+p-value: 5.960464477539063e-08
+istotna roznica: True
+
+==================================================
+KONCOWY WNIOSEK
+==================================================
+Porownano trzy metody rozpoznawania spamu: GaussianNB, KNN oraz TF-IDF + ComplementNB.
+Najlepszy sredni F1-score dla klasy Spam uzyskal model TF-IDF + ComplementNB.
+Dodatkowo sprawdzono rozne inputy dla GaussianNB oraz resampling: RandomOverSampler i SMOTE.
+Gorszy wynik w niektorych wariantach nie jest bledem - celem bylo porownanie wplywu cech i resamplingu.
