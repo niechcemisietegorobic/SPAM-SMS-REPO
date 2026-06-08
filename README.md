@@ -36,7 +36,7 @@ Zbiór jest **niezbalansowany**, ponieważ wiadomości spam jest dużo mniej ni�
 
 Poniższy wykres pokazuje rozkład klas, zależność długości wiadomości od liczby słów, macierz pomyłek oraz krzywą ROC dla modelu GaussianNB.
 
-![Wizualizacja zbioru i wyników GaussianNB](projekt_gnb.png)
+![Wizualizacja zbioru i wyników GaussianNB](spamsms/projekt_gnb.png)
 
 ---
 
@@ -82,7 +82,7 @@ Model: **TF-IDF + Complement Naive Bayes**.
 
 Ten model sprawdza, **jakie słowa występują w wiadomości**.
 
-![Macierz pomyłek TF-IDF + ComplementNB](macierz_tfidf.png)
+![Macierz pomyłek TF-IDF + ComplementNB](spamsms/macierz_tfidf.png)
 
 ---
 
@@ -127,7 +127,7 @@ Porównano:
 
 Celem było sprawdzenie, czy wystarczy jedna cecha, para cech, czy lepszy jest pełny zestaw cech.
 
-![GaussianNB — porównanie różnych inputów](gnb_porownanie_cech.png)
+![GaussianNB — porównanie różnych inputów](spamsms/gnb_porownanie_cech.png)
 
 Wyniki pokazują, że pojedyncza cecha nie zawsze wystarcza. To nie jest problem — celem eksperymentu było właśnie porównanie różnych wejść.
 
@@ -145,7 +145,7 @@ RandomOverSampler powiela przykłady z klasy mniejszościowej, czyli spamu.
 
 SMOTE tworzy nowe sztuczne przykłady klasy mniejszościowej na podstawie istniejących próbek w przestrzeni cech.
 
-![GaussianNB — porównanie resamplingu](resampling_gnb_porownanie.png)
+![GaussianNB — porównanie resamplingu](spamsms/resampling_gnb_porownanie.png)
 
 Wynik po resamplingu nie musi być zawsze lepszy. W tym projekcie chodziło o porównanie wpływu resamplingu na precision, recall, F1-score i balanced accuracy.
 
@@ -167,7 +167,7 @@ Oznacza to:
 
 Stratyfikacja jest ważna, ponieważ zbiór jest niezbalansowany i w każdym podziale powinniśmy zachować podobny udział spamu i hamu.
 
-![Porównanie F1-score trzech modeli](porownanie_f1_3modele_boxplot.png)
+![Porównanie F1-score trzech modeli](spamsms/porownanie_f1_3modele_boxplot.png)
 
 ---
 
