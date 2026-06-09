@@ -13,12 +13,8 @@ def load_sms_data(path='data/spam.csv'):
 
 
 # =======================================================
-# Parsowanie wiadomosci za pomoca regexow
+# Parsowanie wiadomosci - regex
 # =======================================================
-# Nie dodajemy tutaj nowych cech typu link/e-mail/telefon.
-# Regex sluzy tylko do czytelnego policzenia tych samych cech,
-# ktore byly w projekcie od poczatku: slowa, wielkie litery,
-# cyfry i wykrzykniki.
 
 
 def policz_slowa_regex(tekst):
