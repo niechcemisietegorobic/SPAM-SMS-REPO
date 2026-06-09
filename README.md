@@ -110,28 +110,7 @@ re.findall(r'!', tekst)         # wyszukuje wykrzykniki
 
 Dzięki temu można jasno powiedzieć, że z każdej wiadomości wyciągamy konkretne elementy tekstu i zamieniamy je na liczby.
 
----
 
-## Dodatkowy eksperyment: GaussianNB na różnych wejściach
-
-Dodano eksperyment, w którym ten sam model **GaussianNB** został uruchomiony na różnych zestawach cech.
-
-Porównano:
-
-- tylko długość,
-- tylko wykrzykniki,
-- tylko cyfry,
-- długość + słowa,
-- cyfry + wykrzykniki,
-- wszystkie 5 cech razem.
-
-Celem było sprawdzenie, czy wystarczy jedna cecha, para cech, czy lepszy jest pełny zestaw cech.
-
-![GaussianNB — porównanie różnych inputów](spamsms/gnb_porownanie_cech.png)
-
-Wyniki pokazują, że pojedyncza cecha nie zawsze wystarcza. To nie jest problem — celem eksperymentu było właśnie porównanie różnych wejść.
-
----
 
 ## Dodatkowy eksperyment: RandomOverSampler i SMOTE
 
