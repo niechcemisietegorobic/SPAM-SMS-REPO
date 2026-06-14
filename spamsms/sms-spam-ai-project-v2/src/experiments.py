@@ -1,6 +1,8 @@
 import numpy as np
 from scipy.stats import wilcoxon
 from imblearn.over_sampling import RandomOverSampler, SMOTE
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.base import ClassifierMixin, BaseEstimator
 from sklearn.model_selection import train_test_split, RepeatedStratifiedKFold, cross_validate
 from sklearn.metrics import (
     accuracy_score,
@@ -40,6 +42,15 @@ FEATURE_SETS = {
     'wszystkie 5 cech': ['dlugosc', 'slowa', 'wielkie', 'cyfry', 'wykrzykniki'],
 }
 
+# MajorityClassifier
+class MajorityClassifier(ClassifierMixin, BaseEstimator):
+    def fit(self, X, y):
+        klasy, licznosci = np.unique(y, return_counts=True)
+        self.klasa_wiekszosciowa = klasy[np.argmax(licznosci)]
+        return self
+
+    def predict(self, X):
+        return np.full(len(X), self.klasa_wiekszosciowa)
 
 def _metrics_dict(y_true, y_pred, y_prob):
     cm = confusion_matrix(y_true, y_pred)
@@ -191,6 +202,23 @@ def compare_gnb_resampling(X, y, random_state=42):
             'train_ham': int(np.sum(y_train_final == 0)),
             'train_spam': int(np.sum(y_train_final == 1)),
         })
+        rows.append(scores)
+    return rows
+
+def compare_decisiontree_and_majority_classifier(X, y, random_state=42):
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=random_state, stratify=y
+    )
+    classifiers = {
+        'DecisionTree': DecisionTreeClassifier(random_state=random_state),
+        'MajorityClassifier': MajorityClassifier(),
+    }
+    rows = []
+    for name, model in classifiers.items():
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_test)
+        scores = _simple_scores(y_test, y_pred)
+        scores.update({'name': name})
         rows.append(scores)
     return rows
 

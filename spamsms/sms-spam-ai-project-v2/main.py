@@ -10,6 +10,7 @@ from src.experiments import (
     cross_validate_all,
     summarize_cv,
     wilcoxon_tests,
+    compare_decisiontree_and_majority_classifier,
 )
 from src.visualizations import (
     save_main_gnb_figure,
@@ -18,6 +19,7 @@ from src.visualizations import (
     save_f1_boxplot,
     save_gnb_input_comparison,
     save_resampling_comparison,
+    save_decisiontree_and_majorityclassifier_comparison,
 )
 
 
@@ -119,12 +121,28 @@ def main():
         print('istotna roznica:', values['significant'])
 
     print('\n' + '=' * 50)
+    print('DODATKOWY EKSPERYMENT - porownanie DecisionTree i MajorityClassifier')
+    classifiers_rows = compare_decisiontree_and_majority_classifier(X, y)
+    print('=' * 50)
+    for row in classifiers_rows:
+        print('\nKlasyfikator:', row['name'])
+        print('Accuracy:', round(row['accuracy'], 4))
+        print('Balanced accuracy:', round(row['balanced_accuracy'], 4))
+        print('Precision spam:', round(row['precision_spam'], 4))
+        print('Recall spam:', round(row['recall_spam'], 4))
+        print('F1 spam:', round(row['f1_spam'], 4))
+    save_decisiontree_and_majorityclassifier_comparison(classifiers_rows, FIGURES_DIR / 'klasyfikatory.png')
+
+
+    print('\n' + '=' * 50)
     print('KONCOWY WNIOSEK')
     print('=' * 50)
     print('Porownano trzy metody rozpoznawania spamu: GaussianNB, KNN oraz TF-IDF + ComplementNB.')
     print('Najlepszy sredni F1-score dla klasy Spam uzyskal model TF-IDF + ComplementNB.')
     print('Dodatkowo sprawdzono rozne inputy dla GaussianNB oraz resampling: RandomOverSampler i SMOTE.')
     print('Gorszy wynik w niektorych wariantach nie jest bledem - celem bylo porownanie wplywu cech i resamplingu.')
+
+    
 
 
 if __name__ == '__main__':

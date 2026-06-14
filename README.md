@@ -258,7 +258,7 @@ py main.py
 Po uruchomieniu program:
 
 1. wczytuje dane,
-2. parsuje wiadomości regexem do starych ręcznych cech,
+2. parsuje wiadomości regexem do ręcznych cech,
 3. trenuje trzy modele,
 4. robi dodatkowe porównanie inputów dla GaussianNB,
 5. porównuje RandomOverSampler i SMOTE,

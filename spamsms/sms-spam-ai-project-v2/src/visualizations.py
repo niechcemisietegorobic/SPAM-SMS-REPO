@@ -151,3 +151,23 @@ def save_resampling_comparison(rows, output_path='figures/resampling_gnb_porowna
     plt.tight_layout()
     plt.savefig(output_path, dpi=150)
     plt.close()
+
+def save_decisiontree_and_majorityclassifier_comparison(rows, output_path='figures/klasyfikatory.png'):
+    names = [r['name'] for r in rows]
+    precision = [r['precision_spam'] for r in rows]
+    recall = [r['recall_spam'] for r in rows]
+    f1 = [r['f1_spam'] for r in rows]
+    x = np.arange(len(names))
+    width = 0.25
+    plt.figure(figsize=(8, 6))
+    plt.bar(x - width, precision, width, label='Precision spam')
+    plt.bar(x, recall, width, label='Recall spam')
+    plt.bar(x + width, f1, width, label='F1 spam')
+    plt.xticks(x, names)
+    plt.ylabel('Wynik')
+    plt.title('Klasyfikatory - porownanie DecisionTree i MajorityClassifier')
+    plt.legend()
+    plt.grid(axis='y')
+    plt.tight_layout()
+    plt.savefig(output_path, dpi=150)
+    plt.close()

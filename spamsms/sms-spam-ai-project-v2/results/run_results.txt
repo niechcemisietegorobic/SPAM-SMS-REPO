@@ -202,6 +202,24 @@ p-value: 5.960464477539063e-08
 istotna roznica: True
 
 ==================================================
+DODATKOWY EKSPERYMENT - porownanie DecisionTree i MajorityClassifier
+==================================================
+
+Klasyfikator: DecisionTree
+Accuracy: 0.9686
+Balanced accuracy: 0.9365
+Precision spam: 0.875
+Recall spam: 0.8926
+F1 spam: 0.8837
+
+Klasyfikator: MajorityClassifier
+Accuracy: 0.8664
+Balanced accuracy: 0.5
+Precision spam: 0.0
+Recall spam: 0.0
+F1 spam: 0.0
+
+==================================================
 KONCOWY WNIOSEK
 ==================================================
 Porownano trzy metody rozpoznawania spamu: GaussianNB, KNN oraz TF-IDF + ComplementNB.

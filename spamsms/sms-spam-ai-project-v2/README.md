@@ -246,13 +246,13 @@ cd sms-spam-ai-project-v2
 Zainstaluj wymagane biblioteki:
 
 ```bash
-py -m pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 Uruchom projekt:
 
 ```bash
-py main.py
+python main.py
 ```
 
 Po uruchomieniu program:
