@@ -12,9 +12,7 @@ def load_sms_data(path='data/spam.csv'):
     return dane
 
 
-# =======================================================
-# Parsowanie wiadomosci - regex
-# =======================================================
+#regex
 
 
 def policz_slowa_regex(tekst):
